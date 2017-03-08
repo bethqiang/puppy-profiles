@@ -5,14 +5,17 @@ class AppContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {},
-      allUsers: []
+      loggedInUser: {},
+      allUsers: [],
+      selectedUser: {}
     };
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
+    this.selectUser = this.selectUser.bind(this);
     // this.editProfile = this.editProfile.bind(this);
   }
 
+  // Move this to AllUsers component?
   componentDidMount() {
     axios.get('/api/users')
     .then(res => res.data)
@@ -23,21 +26,30 @@ class AppContainer extends React.Component {
   signup(email, password, name, picture, description) {
     axios.post('/api/auth/local/signup', { email, password, name, picture, description })
     .then(res => res.data)
-    .then(user => this.setState({ currentUser: user }))
+    .then(user => this.setState({ loggedInUser: user }))
     .catch(err => console.log(err));
   }
 
   login(email, password) {
     axios.post('/api/auth/local/login', { email, password })
     .then(res => res.data)
-    .then(user => this.setState({ currentUser: user }))
+    .then(user => this.setState({ loggedInUser: user }))
+    .catch(err => console.log(err));
+  }
+
+  // Fires when a single user's page is viewed
+  selectUser(userName) {
+    axios.get(`/api/users/${userName}`)
+    .then(res => res.data)
+    .then(user => this.setState({ selectedUser: user }))
     .catch(err => console.log(err));
   }
 
   render() {
     const props = Object.assign({}, this.state, {
       signup: this.signup,
-      login: this.login
+      login: this.login,
+      selectUser: this.selectUser
     });
 
     return (
