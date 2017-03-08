@@ -23,9 +23,9 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   // Password not required bc OAuth -> users may or may not have passwords
   password: { type: String },
-  name: { type: String, required: true },
+  name: { type: String, required: true, unique: true },
   picture: { type: String, default: '/img/default.png' },
-  description: { type: String, required: true }
+  description: { type: String }
 });
 
 // Hash and salt passwords before saving to db
@@ -54,5 +54,17 @@ UserSchema.methods.authenticate = function (enteredPassword) {
     ))
   );
 };
+
+UserSchema.set('toJSON', {
+  transform(doc, ret, options) {
+    const retJson = {
+      email: ret.email,
+      name: ret.name,
+      picture: ret.picture,
+      description: ret.description
+    };
+    return retJson;
+  }
+});
 
 module.exports = mongoose.model('User', UserSchema);

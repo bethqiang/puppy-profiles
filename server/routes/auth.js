@@ -1,14 +1,8 @@
 const auth = require('express').Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const _ = require('lodash');
 
 const User = require('../../db/models');
-
-// Only send these fields to the client
-const fields = ['email', 'name', 'picture', 'description'];
-// Using pick instead of omit bc (1) pick is much faster and (2) omit can't operate on documents
-const sendToClient = (user, fields) => _.pick(user, fields);
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -62,7 +56,7 @@ passport.use(new LocalStrategy(
 ));
 
 // Send user info front-end after signup/login/logout
-auth.get('/whoami', (req, res) => res.json(sendToClient(req.user, fields)));
+auth.get('/whoami', (req, res) => res.json(req.user));
 
 // Logout
 auth.post('/logout', (req, res, next) => {
