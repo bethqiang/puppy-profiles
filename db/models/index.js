@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+// Use native promises
+mongoose.Promise = global.Promise;
+
 // For salting passwords
 const SALT_WORK_FACTOR = 10;
 
