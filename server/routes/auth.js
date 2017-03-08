@@ -11,21 +11,21 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(
   (id, done) => {
     User.findById(id)
-      .then(user => done(null, user))
-      .catch(err => done(err));
+    .then(user => done(null, user))
+    .catch(err => done(err));
   }
 );
 
 // Local signup
 auth.post('/local/signup', (req, res, next) => {
   User.create(req.body)
-    .then(user => {
-      req.login(user, err => {
-        if (err) next(err);
-        else res.sendStatus(201);
-      });
-    })
-    .catch(next);
+  .then(user => {
+    req.login(user, err => {
+      if (err) next(err);
+      else res.sendStatus(201);
+    });
+  })
+  .catch(next);
 });
 
 // Local login
@@ -38,7 +38,7 @@ auth.post('/local/login', (req, res, next) => {
 // Local login strategy
 passport.use(new LocalStrategy(
   (email, password, done) => {
-    User.findOne({ email })
+    User.findOne({ email }).exec()
     .then(user => {
       if (!user) {
         return done(null, false, { message: 'Email incorrect.' });

@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
 // Get one user
 router.get('/:name', (req, res, next) => {
-  User.findOne({ name: req.params.name })
+  User.findOne({ name: req.params.name }).exec()
   .then(user => res.json(user))
   .catch(next);
 });
@@ -20,7 +20,7 @@ router.get('/:name', (req, res, next) => {
 router.post('/:name', (req, res, next) => {
   // Will implement this conditional when Passport/login is set up
   // if (req.user.name === req.params.name) {
-  User.findOne({ name: req.params.name })
+  User.findOne({ name: req.params.name }).exec()
   .then(user => {
     user.email = req.body.email || user.email;
     user.password = req.body.password || user.password;

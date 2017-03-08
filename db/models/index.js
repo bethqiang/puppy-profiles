@@ -55,6 +55,7 @@ UserSchema.methods.authenticate = function (enteredPassword) {
   );
 };
 
+// When sending data from db to anywhere, only send these fields
 UserSchema.set('toJSON', {
   transform(doc, ret, options) {
     const retJson = {
