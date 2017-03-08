@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const { resolve } = require('path');
 const chalk = require('chalk');
+const passport = require('passport');
 
 const app = express();
 
@@ -23,6 +24,10 @@ app.use(cookieSession({
 // Body parsing middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Authentication middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Serve static files
 app.use(express.static(resolve(__dirname, '../browser/index.html')));

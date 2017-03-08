@@ -3,7 +3,9 @@ const _ = require('lodash');
 
 const User = require('../../db/models');
 
+// Only send these fields to the client
 const fields = ['email', 'name', 'picture', 'description'];
+// Using pick instead of omit bc (1) pick is much faster and (2) omit can't operate on documents
 const sendToClient = (user, fields) => _.pick(user, fields);
 
 // Get all users
