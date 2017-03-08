@@ -22,7 +22,7 @@ auth.post('/local/signup', (req, res, next) => {
   .then(user => {
     req.login(user, err => {
       if (err) next(err);
-      else res.sendStatus(201);
+      else res.status(201).json(user);
     });
   })
   .catch(next);
