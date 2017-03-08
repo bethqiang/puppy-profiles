@@ -28,6 +28,9 @@ app.use(bodyParser.json());
 app.use(express.static(resolve(__dirname, '../browser/index.html')));
 app.use(express.static(resolve(__dirname, '../public')));
 
+// Routes
+app.use('/api/users', require('./users'));
+
 // Send index.html for anything else
 app.get('/*', (req, res) => {
   res.sendFile(resolve(__dirname, '../browser/index.html'));
