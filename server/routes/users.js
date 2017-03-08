@@ -1,17 +1,25 @@
 const router = require('express').Router();
-const User = require('../db/models');
+const _ = require('lodash');
+
+const User = require('../../db/models');
+
+const fields = ['email', 'name', 'picture', 'description'];
+const sendToClient = (user, fields) => _.pick(user, fields);
 
 // Get all users
 router.get('/', (req, res, next) => {
   User.find({}).exec()
-  .then(users => res.json(users))
+  .then(users => {
+    users = users.map(user => sendToClient(user, fields));
+    res.json(users);
+  })
   .catch(next);
 });
 
 // Get one user
 router.get('/:id', (req, res, next) => {
   User.findById(req.params.id)
-  .then(user => res.json(user))
+  .then(user => res.json(sendToClient(user, fields)))
   .catch(next);
 });
 
@@ -28,7 +36,7 @@ router.post('/:id', (req, res, next) => {
     user.description = req.body.description || user.description;
     return user.save();
   })
-  .then(user => res.json(user))
+  .then(user => res.json(sendToClient(user, fields)))
   .catch(next);
   // }
 });
