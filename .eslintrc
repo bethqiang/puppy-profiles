@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "es6": true,
+    "mocha": true
+  },
+  "rules": {
+    "arrow-parens": ["error", "as-needed", {"requireForBlockBody": false}],
+    "comma-dangle": ["error", "never"],
+    "consistent-return": [0],
+    "func-names": [0],
+    "no-console": [0],
+    "no-shadow": [0],
+    "no-unused-vars": [1, {"args": "none"}],
+    "no-use-before-define": [0]
+  }
+}
