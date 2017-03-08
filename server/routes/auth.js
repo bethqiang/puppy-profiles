@@ -36,24 +36,26 @@ auth.post('/local/login', (req, res, next) => {
 });
 
 // Local login strategy
-passport.use(new LocalStrategy(
-  (email, password, done) => {
-    User.findOne({ email }).exec()
-    .then(user => {
-      if (!user) {
-        return done(null, false, { message: 'Email incorrect.' });
+// Use email as the username
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password'
+}, (email, password, done) => {
+  User.findOne({ email }).exec()
+  .then(user => {
+    if (!user) {
+      return done(null, false, { message: 'Email incorrect.' });
+    }
+    return user.authenticate(password)
+    .then(ok => {
+      if (!ok) {
+        return done(null, false, { message: 'Password incorrect' });
       }
-      return user.authenticate(password)
-      .then(ok => {
-        if (!ok) {
-          return done(null, false, { message: 'Password incorrect' });
-        }
-        done(null, user);
-      });
-    })
-    .catch(done);
-  }
-));
+      done(null, user);
+    });
+  })
+  .catch(done);
+}));
 
 // Send user info front-end after signup/login/logout
 auth.get('/whoami', (req, res) => res.json(req.user));

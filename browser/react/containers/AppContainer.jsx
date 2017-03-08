@@ -1,5 +1,4 @@
 import React from 'react';
-// import { browserHistory } from 'react-router';
 import axios from 'axios';
 
 class AppContainer extends React.Component {
@@ -10,7 +9,7 @@ class AppContainer extends React.Component {
       allUsers: {}
     };
     this.signup = this.signup.bind(this);
-    // this.login = this.login.bind(this);
+    this.login = this.login.bind(this);
     // this.editProfile = this.editProfile.bind(this);
   }
 
@@ -19,16 +18,21 @@ class AppContainer extends React.Component {
     .then(res => res.data)
     .then(user => {
       this.setState({ currentUser: user });
-      // FE individual users route not set up yet
-      // this.setState({ currentUser: user }, () => {
-      //   browserHistory.push(`/users/${user.name}`);
-      // });
+    });
+  }
+
+  login(email, password) {
+    axios.post('/api/auth/local/login', { email, password })
+    .then(res => res.data)
+    .then(user => {
+      this.setState({ currentUser: user });
     });
   }
 
   render() {
     const props = Object.assign({}, this.state, {
-      signup: this.signup
+      signup: this.signup,
+      login: this.login
     });
 
     return (
