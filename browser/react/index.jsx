@@ -9,6 +9,7 @@ import SignupContainer from './containers/SignupContainer';
 import LoginContainer from './containers/LoginContainer';
 import AllUsers from './components/AllUsers';
 import SingleUser from './components/SingleUser';
+import EditProfileContainer from './containers/EditProfileContainer';
 
 render(
   <Router history={browserHistory}>
@@ -17,6 +18,7 @@ render(
       <Route path="login" component={LoginContainer} />
       <Route path="users" component={AllUsers} />
       <Route path="users/:name" component={SingleUser} />
+      <Route path="users/me/edit" component={EditProfileContainer} />
     </Route>
   </Router>,
   document.getElementById('app')

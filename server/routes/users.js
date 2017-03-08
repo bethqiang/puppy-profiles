@@ -17,7 +17,7 @@ router.get('/:name', (req, res, next) => {
 });
 
 // Edit your (and only your) user page
-router.post('/:name', (req, res, next) => {
+router.put('/:name', (req, res, next) => {
   // Will implement this conditional when Passport/login is set up
   // if (req.user.name === req.params.name) {
   User.findOne({ name: req.params.name }).exec()
