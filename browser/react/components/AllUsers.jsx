@@ -19,11 +19,12 @@ class AllUsers extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="users-header center-align">
+      <div>
+        <div className="page-header center-align">
           <h2>Puppy Profiles</h2>
           <h5>All dogs are available for adoption through <a href="https://www.austinpetsalive.org/">Austin Pets Alive!</a> as of 3/7.</h5>
         </div>
+        <hr />
         <div className="row">
           {this.state.allUsers.map(user => (
             <div key={user.name} className="col m4">

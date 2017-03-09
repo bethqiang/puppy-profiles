@@ -2,7 +2,9 @@ import React from 'react';
 
 const Login = props => (
   <div>
-    <h3>Log In</h3>
+    <div className="page-header center-align">
+      <h3>Log In</h3>
+    </div>
     <form onSubmit={props.handleSubmit}>
       <div>
         <input
@@ -24,7 +26,7 @@ const Login = props => (
           required
         />
       </div>
-      <button type="submit">Log In</button>
+      <button type="submit" className="btn waves-effect waves-light">Log In</button>
     </form>
   </div>
 );
