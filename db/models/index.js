@@ -9,7 +9,7 @@ const SALT_WORK_FACTOR = 10;
 
 // Setting up db uri
 // If testing, '_test' will be added on to the db name to keep environments separate
-const name = `user_profiles${process.env.NODE_ENV === 'testing' ? '_test' : ''}`;
+const name = `puppy_profiles${process.env.NODE_ENV === 'testing' ? '_test' : ''}`;
 // Set URL to either Heroku or local db
 const url = process.env.MONGODB_URI || `mongodb://localhost/${name}`;
 
