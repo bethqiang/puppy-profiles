@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build-watch": "webpack -w",
+    "postinstall": "npm run build",
     "seed": "node db/seed.js",
     "start": "nodemon server/index.js",
     "test": "cross-env NODE_ENV=testing mocha --compilers js:babel-register browser/**/*.test.js browser/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
