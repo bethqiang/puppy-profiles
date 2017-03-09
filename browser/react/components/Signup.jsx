@@ -4,13 +4,14 @@ const Signup = props => (
   <div>
     <div className="page-header center-align">
       <h3>Sign Up</h3>
+      <p>* denotes a required field</p>
     </div>
     <form onSubmit={props.handleSubmit}>
       <div>
         <input
           name="email"
           type="email"
-          placeholder="Email Address"
+          placeholder="Email Address*"
           onChange={evt => props.handleChange('email', evt.target.value)}
           value={props.email}
           required
@@ -20,7 +21,7 @@ const Signup = props => (
         <input
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder="Password*"
           onChange={evt => props.handleChange('password', evt.target.value)}
           value={props.password}
           required
@@ -30,7 +31,7 @@ const Signup = props => (
         <input
           name="name"
           type="text"
-          placeholder="Display Name"
+          placeholder="Display Name*"
           onChange={evt => props.handleChange('name', evt.target.value)}
           value={props.name}
           required
@@ -49,7 +50,7 @@ const Signup = props => (
         <textarea
           name="description"
           type="text"
-          placeholder="Profile Description"
+          placeholder="Profile Description*"
           onChange={evt => props.handleChange('description', evt.target.value)}
           value={props.description}
           className="materialize-textarea"

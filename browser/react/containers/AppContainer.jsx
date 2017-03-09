@@ -72,7 +72,7 @@ class AppContainer extends React.Component {
     return (
       <div>
         <Navbar loggedInUser={this.state.loggedInUser} logout={this.logout} />
-        <div className="container">
+        <div className="container main-container">
           {this.props.children && React.cloneElement(this.props.children, props)}
         </div>
       </div>

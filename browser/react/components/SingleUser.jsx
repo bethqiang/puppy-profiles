@@ -11,9 +11,13 @@ class SingleUser extends React.Component {
     const user = this.props.selectedUser;
     return (
       <div>
-        <h1>{user.name}</h1>
-        <img src={user.picture} alt={`${user.name} profile`} />
-        <p>{user.description}</p>
+        <div className="page-header center-align">
+          <h2>{user.name}</h2>
+        </div>
+        <div className="center-align">
+          <img src={user.picture} alt={`${user.name} profile`} className="user-image" />
+          <p className="user-description">{user.description}</p>
+        </div>
       </div>
     );
   }
