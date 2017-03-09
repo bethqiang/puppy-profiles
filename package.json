@@ -1,5 +1,5 @@
 {
-  "name": "user-profiles",
+  "name": "puppy-profiles",
   "version": "1.0.0",
   "description": "",
   "main": "server/index.js",
@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bethqiang/user-profiles.git"
+    "url": "git+https://github.com/bethqiang/puppy-profiles.git"
   },
   "keywords": [],
   "author": "Beth Qiang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bethqiang/user-profiles/issues"
+    "url": "https://github.com/bethqiang/puppy-profiles/issues"
   },
-  "homepage": "https://github.com/bethqiang/user-profiles#readme",
+  "homepage": "https://github.com/bethqiang/puppy-profiles#readme",
   "dependencies": {
     "axios": "^0.15.3",
     "babel": "^6.23.0",
