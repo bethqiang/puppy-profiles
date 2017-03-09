@@ -19,16 +19,27 @@ class AllUsers extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.allUsers.map(user => (
-          <div key={user.name}>
-            <Link to={`/users/${user.name}`}>
-              <h1>{user.name}</h1>
-              <img src={user.picture} alt={`${user.name} profile`} />
-              <p>{user.description}</p>
-            </Link>
-          </div>
-        ))}
+      <div className="container">
+        <div className="users-header center-align">
+          <h2>Puppy Profiles</h2>
+          <h5>All dogs are available for adoption through <a href="https://www.austinpetsalive.org/">Austin Pets Alive!</a> as of 3/7.</h5>
+        </div>
+        <div className="row">
+          {this.state.allUsers.map(user => (
+            <div key={user.name} className="col m4">
+              <Link to={`/users/${user.name}`}>
+                <div className="card">
+                  <div className="card-image">
+                    <img src={user.picture} alt={`${user.name} profile`} />
+                  </div>
+                  <div className="card-content center-align">
+                    <h5>{user.name}</h5>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

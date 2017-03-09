@@ -1,7 +1,7 @@
 /* global document */
 
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 import { render } from 'react-dom';
 
 import AppContainer from './containers/AppContainer';
@@ -14,6 +14,7 @@ import EditProfileContainer from './containers/EditProfileContainer';
 render(
   <Router history={browserHistory}>
     <Route path="/" component={AppContainer}>
+      <IndexRedirect to="/users" />
       <Route path="signup" component={SignupContainer} />
       <Route path="login" component={LoginContainer} />
       <Route path="users" component={AllUsers} />

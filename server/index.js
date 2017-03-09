@@ -32,6 +32,7 @@ app.use(passport.session());
 // Serve static files
 app.use(express.static(resolve(__dirname, '../browser/index.html')));
 app.use(express.static(resolve(__dirname, '../public')));
+app.use(express.static(resolve(__dirname, '../node_modules/materialize-css/dist')));
 
 // Routes
 app.use('/api', require('./routes/api'));
