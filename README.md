@@ -56,9 +56,15 @@ When the dependencies have been installed and your `.env` file has been configur
 mongod
 ```
 
+The database can be seeded with (make sure to run this in a different terminal window than your `mongod` process):
+
+```
+npm run seed
+```
+
 ### Start!
 
-Then run the webpack build process in a different terminal window:
+Then run the webpack build process in the same or a new terminal window:
 
 ```
 npm run build-watch
