@@ -2,7 +2,9 @@ import React from 'react';
 
 const Signup = props => (
   <div>
-    <h3>Sign Up</h3>
+    <div className="page-header center-align">
+      <h3>Sign Up</h3>
+    </div>
     <form onSubmit={props.handleSubmit}>
       <div>
         <input
@@ -28,7 +30,7 @@ const Signup = props => (
         <input
           name="name"
           type="text"
-          placeholder="Name"
+          placeholder="Display Name"
           onChange={evt => props.handleChange('name', evt.target.value)}
           value={props.name}
           required
@@ -38,21 +40,22 @@ const Signup = props => (
         <input
           name="picture"
           type="text"
-          placeholder="Picture URL"
+          placeholder="Profile Picture URL"
           onChange={evt => props.handleChange('picture', evt.target.value)}
           value={props.picture}
         />
       </div>
       <div>
-        <input
+        <textarea
           name="description"
           type="text"
-          placeholder="Description"
+          placeholder="Profile Description"
           onChange={evt => props.handleChange('description', evt.target.value)}
           value={props.description}
+          className="materialize-textarea"
         />
       </div>
-      <button type="submit">Sign Up</button>
+      <button type="submit" className="btn waves-effect waves-light">Sign Up</button>
     </form>
   </div>
 );

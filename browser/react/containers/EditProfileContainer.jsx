@@ -44,13 +44,20 @@ class EditProfileContainer extends React.Component {
         name={this.state.name}
         picture={this.state.picture}
         description={this.state.description}
+        loggedInUser={this.props.loggedInUser}
       />
     );
   }
 }
 
 EditProfileContainer.propTypes = {
-  editProfile: React.PropTypes.func // eslint-disable-line react/require-default-props
+  editProfile: React.PropTypes.func, // eslint-disable-line react/require-default-props
+  loggedInUser: React.PropTypes.shape({ // eslint-disable-line react/require-default-props
+    email: React.PropTypes.string,
+    name: React.PropTypes.string,
+    picture: React.PropTypes.string,
+    description: React.PropTypes.string
+  })
 };
 
 export default EditProfileContainer;

@@ -15,6 +15,7 @@ form {
   text-align: center;
 }
 
-form button {
+form button,
+a.btn {
   margin-top: 20px;
 }
