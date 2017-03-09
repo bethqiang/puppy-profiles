@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-A online build can be found [here](https://puppy-profiles.herokuapp.com).
+An online build can be found [here](https://puppy-profiles.herokuapp.com).
 
 ## How-to
 
