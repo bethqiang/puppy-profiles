@@ -2,6 +2,8 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 
+import Navbar from '../components/Navbar';
+
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -13,13 +15,14 @@ class AppContainer extends React.Component {
     this.login = this.login.bind(this);
     this.selectUser = this.selectUser.bind(this);
     this.editProfile = this.editProfile.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
     axios.get('/api/auth/whoami')
     .then(res => (
       res.data ? this.setState({ loggedInUser: res.data })
-               : this.setState({ loggedInUser: null })))
+               : this.setState({ loggedInUser: {} })))
     .catch(err => console.log(err));
   }
 
@@ -51,6 +54,13 @@ class AppContainer extends React.Component {
     .catch(err => console.log(err));
   }
 
+  logout() {
+    axios.post('/api/auth/logout')
+    .then(() => this.setState({ loggedInUser: {} }))
+    .then(() => browserHistory.push('/users'))
+    .catch(err => console.log(err));
+  }
+
   render() {
     const props = Object.assign({}, this.state, {
       signup: this.signup,
@@ -61,6 +71,7 @@ class AppContainer extends React.Component {
 
     return (
       <div>
+        <Navbar loggedInUser={this.state.loggedInUser} logout={this.logout} />
         {this.props.children && React.cloneElement(this.props.children, props)}
       </div>
     );
