@@ -36,3 +36,39 @@ a.btn {
 .user-description {
   font-size: 18px;
 }
+
+.googleOAuth {
+  padding-top: 20px;
+}
+
+/* The `or-divider` is what divides local login/signup from OAuth */
+
+.or-divider {
+  overflow: hidden;
+  text-align: center;
+  color: #A9A9A9;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.or-divider:before,
+.or-divider:after {
+  background-color: #A9A9A9;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.or-divider:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.or-divider:after {
+  left: 0.5em;
+  margin-right: -50%;
+}

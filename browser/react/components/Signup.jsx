@@ -58,6 +58,12 @@ const Signup = props => (
       </div>
       <button type="submit" className="btn waves-effect waves-light">Sign Up</button>
     </form>
+    <div className="googleOAuth center-align">
+      <p className="or-divider">or</p>
+      <a target="_self" href="/api/auth/google/login" className="btn waves-effect waves-light red">
+        Sign Up with Google
+      </a>
+    </div>
   </div>
 );
 

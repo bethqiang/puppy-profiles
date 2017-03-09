@@ -25,7 +25,8 @@ const UserSchema = new mongoose.Schema({
   password: { type: String },
   name: { type: String, required: true, unique: true },
   picture: { type: String, default: '/img/default.png' },
-  description: { type: String }
+  description: { type: String },
+  googleId: { type: String }
 });
 
 // Hash and salt passwords before saving to db
@@ -53,6 +54,18 @@ UserSchema.methods.authenticate = function (enteredPassword) {
       err ? reject(err) : resolve(result)
     ))
   );
+};
+
+UserSchema.statics.findOrCreate = function (props) {
+  const self = this;
+  return self.findOne({ googleId: props.googleId }).exec().then(user => {
+    if (user) return user;
+    return self.create({
+      googleId: props.googleId,
+      email: props.email,
+      name: props.name
+    });
+  });
 };
 
 // When sending data from db to anywhere, only send these fields
