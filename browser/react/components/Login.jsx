@@ -26,7 +26,7 @@ const Login = props => (
           required
         />
       </div>
-      <button type="submit" className="btn waves-effect waves-light">Log In</button>
+      <button type="submit" className="btn waves-effect waves-light yellow darken-1">Log In</button>
     </form>
     <div className="googleOAuth center-align">
       <p className="or-divider">or</p>

@@ -55,12 +55,12 @@ const EditProfile = props => (
               className="materialize-textarea"
             />
           </div>
-          <button type="submit" className="btn waves-effect waves-light">Save</button>
+          <button type="submit" className="btn waves-effect waves-light yellow darken-1">Save Changes</button>
         </form>
       </div>
       : <div className="page-header center-align">
         <h5>You need to be logged in to edit your profile.</h5>
-        <Link to="/login" className="btn waves-effect waves-light">Log In</Link>
+        <Link to="/login" className="btn waves-effect waves-light yellow darken-1">Log In</Link>
       </div>
     }
   </div>

@@ -56,7 +56,7 @@ const Signup = props => (
           className="materialize-textarea"
         />
       </div>
-      <button type="submit" className="btn waves-effect waves-light">Sign Up</button>
+      <button type="submit" className="btn waves-effect waves-light yellow darken-1">Sign Up</button>
     </form>
     <div className="googleOAuth center-align">
       <p className="or-divider">or</p>

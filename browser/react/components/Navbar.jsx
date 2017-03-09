@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Navbar = props => (
-  <nav>
+  <nav className="light-green">
     <div className="nav-wrapper">
       <div className="container">
         {props.loggedInUser.name
