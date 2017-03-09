@@ -24,15 +24,6 @@ const EditProfile = props => (
       </div>
       <div>
         <input
-          name="password"
-          type="password"
-          placeholder="Confirm Password"
-          onChange={evt => props.handleChange('confirmPassword', evt.target.value)}
-          value={props.confirmPassword}
-        />
-      </div>
-      <div>
-        <input
           name="name"
           type="text"
           placeholder="Name"
@@ -68,7 +59,6 @@ EditProfile.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   email: React.PropTypes.string.isRequired,
   password: React.PropTypes.string.isRequired,
-  confirmPassword: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
   picture: React.PropTypes.string.isRequired,
   description: React.PropTypes.string.isRequired

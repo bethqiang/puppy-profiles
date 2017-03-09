@@ -20,7 +20,7 @@ class SingleUser extends React.Component {
 }
 
 SingleUser.propTypes = {
-  selectUser: React.PropTypes.func,
+  selectUser: React.PropTypes.func, // eslint-disable-line react/require-default-props
   routeParams: React.PropTypes.shape({ name: React.PropTypes.string }).isRequired,
   selectedUser: React.PropTypes.shape({
     name: React.PropTypes.string,

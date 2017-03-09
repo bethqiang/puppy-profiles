@@ -8,7 +8,6 @@ class EditProfileContainer extends React.Component {
     this.state = {
       email: '',
       password: '',
-      confirmPassword: '',
       name: '',
       picture: '',
       description: ''
@@ -17,7 +16,7 @@ class EditProfileContainer extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // Instead of having `onEmailChange` and `onPasswordChange` and etc.,
+  // Instead of having `handleEmailChange` and `handlePasswordChange` and etc.,
   // this is a general function for all fields.
   handleChange(formField, value) {
     this.setState({ [formField]: value });
@@ -26,11 +25,11 @@ class EditProfileContainer extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault();
     const toSend = {};
-    if (this.state.email.length) toSend.email = this.state.email;
-    if (this.state.password.length) toSend.password = this.state.password;
-    if (this.state.name.length) toSend.name = this.state.name;
-    if (this.state.picture.length) toSend.picture = this.state.picture;
-    if (this.state.description.length) toSend.description = this.state.description;
+    if (this.state.email) toSend.email = this.state.email;
+    if (this.state.password) toSend.password = this.state.password;
+    if (this.state.name) toSend.name = this.state.name;
+    if (this.state.picture) toSend.picture = this.state.picture;
+    if (this.state.description) toSend.description = this.state.description;
     // Send axios request to edit profile route
     this.props.editProfile(toSend);
   }
@@ -42,7 +41,6 @@ class EditProfileContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         email={this.state.email}
         password={this.state.password}
-        confirmPassword={this.state.confirmPassword}
         name={this.state.name}
         picture={this.state.picture}
         description={this.state.description}
@@ -52,7 +50,7 @@ class EditProfileContainer extends React.Component {
 }
 
 EditProfileContainer.propTypes = {
-  editProfile: React.PropTypes.func
+  editProfile: React.PropTypes.func // eslint-disable-line react/require-default-props
 };
 
 export default EditProfileContainer;

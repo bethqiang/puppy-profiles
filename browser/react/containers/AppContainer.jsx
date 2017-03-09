@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import axios from 'axios';
 
 class AppContainer extends React.Component {
@@ -6,7 +7,6 @@ class AppContainer extends React.Component {
     super(props);
     this.state = {
       loggedInUser: {},
-      allUsers: [],
       selectedUser: {}
     };
     this.signup = this.signup.bind(this);
@@ -16,12 +16,6 @@ class AppContainer extends React.Component {
   }
 
   componentDidMount() {
-    // Move this to AllUsers component?
-    axios.get('/api/users')
-    .then(res => res.data)
-    .then(users => this.setState({ allUsers: users }))
-    .catch(err => console.log(err));
-
     axios.get('/api/auth/whoami')
     .then(res => (
       res.data ? this.setState({ loggedInUser: res.data })
@@ -32,18 +26,20 @@ class AppContainer extends React.Component {
   signup(email, password, name, picture, description) {
     axios.post('/api/auth/local/signup', { email, password, name, picture, description })
     .then(res => this.setState({ loggedInUser: res.data }))
+    .then(() => browserHistory.push('/users'))
     .catch(err => console.log(err));
   }
 
   login(email, password) {
     axios.post('/api/auth/local/login', { email, password })
     .then(res => this.setState({ loggedInUser: res.data }))
+    .then(() => browserHistory.push('/users'))
     .catch(err => console.log(err));
   }
 
   // Fires when a single user's page is viewed
   selectUser(userName) {
-    axios.put(`/api/users/${userName}`, {})
+    axios.get(`/api/users/${userName}`)
     .then(res => this.setState({ selectedUser: res.data }))
     .catch(err => console.log(err));
   }
@@ -51,6 +47,7 @@ class AppContainer extends React.Component {
   editProfile(updatedFields) {
     axios.put(`/api/users/${this.state.loggedInUser.name}`, updatedFields)
     .then(res => this.setState({ loggedInUser: res.data }))
+    .then(() => browserHistory.push(`/users/${this.state.loggedInUser.name}`))
     .catch(err => console.log(err));
   }
 

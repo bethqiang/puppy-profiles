@@ -7,7 +7,6 @@ class SignupContainer extends React.Component {
     this.state = {
       email: '',
       password: '',
-      confirmPassword: '',
       name: '',
       picture: '',
       description: ''
@@ -16,7 +15,7 @@ class SignupContainer extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // Instead of having `onEmailChange` and `onPasswordChange` and etc.,
+  // Instead of having `handleEmailChange` and `handlePasswordChange` and etc.,
   // this is a general function for all fields.
   handleChange(formField, value) {
     this.setState({ [formField]: value });
@@ -41,7 +40,6 @@ class SignupContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         email={this.state.email}
         password={this.state.password}
-        confirmPassword={this.state.confirmPassword}
         name={this.state.name}
         picture={this.state.picture}
         description={this.state.description}
@@ -51,7 +49,7 @@ class SignupContainer extends React.Component {
 }
 
 SignupContainer.propTypes = {
-  signup: React.PropTypes.func.isRequired
+  signup: React.PropTypes.func // eslint-disable-line react/require-default-props
 };
 
 export default SignupContainer;

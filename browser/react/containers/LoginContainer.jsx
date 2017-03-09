@@ -12,7 +12,7 @@ class LoginContainer extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // Instead of having `onEmailChange` and `onPasswordChange` and etc.,
+  // Instead of having `handleEmailChange` and `handlePasswordChange` and etc.,
   // this is a general function for all fields.
   handleChange(formField, value) {
     this.setState({ [formField]: value });
@@ -21,10 +21,7 @@ class LoginContainer extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault();
     // Send axios request to log in
-    this.props.login(
-      this.state.email,
-      this.state.password
-    );
+    this.props.login(this.state.email, this.state.password);
   }
 
   render() {
@@ -40,7 +37,7 @@ class LoginContainer extends React.Component {
 }
 
 LoginContainer.propTypes = {
-  login: React.PropTypes.func.isRequired
+  login: React.PropTypes.func // eslint-disable-line react/require-default-props
 };
 
 export default LoginContainer;
