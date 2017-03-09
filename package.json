@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build-watch": "webpack -w",
+    "postinstall": "npm run build",
     "seed": "node db/seed.js",
     "start": "nodemon server/index.js",
     "test": "cross-env NODE_ENV=testing mocha --compilers js:babel-register browser/**/*.test.js browser/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
@@ -43,7 +44,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
