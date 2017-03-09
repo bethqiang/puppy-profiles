@@ -15,7 +15,8 @@ const users = [
 ];
 
 User.remove()
-.then(() => User.create(users, () => {
+.then(() => User.create(users)
+.then(() => {
   console.log(chalk.green(`--- Seeded ${users.length} pups successfully. ---`));
   process.exit();
 }));
