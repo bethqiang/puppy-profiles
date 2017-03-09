@@ -4,6 +4,14 @@
 
 A online build can be found [here](https://puppy-profiles.herokuapp.com).
 
+## How-to
+
+* Anyone can see users' profiles. Clicking on a profile from the main page takes you to the user's profile page, and allows you to see their description.
+
+* Sign up or log in locally or via Google OAuth.
+
+* If you're logged in, you're able to edit your own profile, and all changes will of course be saved to the database if you save them. If you're not logged in and you attempt to edit your own profile (the only means to do that right now is by hitting the URL directly), you'll be presented with a message informing you that you need to be.
+
 ## ...but why?
 
 I was given the task of creating a simple app where users could create a profile, edit their profile, and view the profiles that other users created. In search for material to seed my database with, I decided to make those users dogs. (Because one, who doesn't like looking at cute dogs, and two, cute dogs make the frustrating parts of programming much more fun.)
